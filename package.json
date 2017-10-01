@@ -1,0 +1,5 @@
+{
+	"permissions": "*",
+	"autoload": "autoloader.json",
+	"dependencies": ["base", "PhpParser"]
+}

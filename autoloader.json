@@ -1,0 +1,16 @@
+{
+	"files": [
+		{
+			"file":"library/ParentConnector.php",
+			"classes":["ParentConnector"]
+		},
+		{
+			"file":"library/IncompatibleFixer.php",
+			"classes":["IncompatibleFixer"]
+		},
+		{
+			"file":"processes/migrate.php",
+			"classes":["processes\\migrate"]
+		}
+	]
+}
