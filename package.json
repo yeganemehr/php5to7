@@ -1,5 +1,6 @@
 {
 	"permissions": "*",
 	"autoload": "autoloader.json",
-	"dependencies": ["base", "PhpParser"]
+	"dependencies": ["base", "PhpParser"],
+	"license": "MIT"
 }
