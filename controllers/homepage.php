@@ -21,4 +21,11 @@ class homepage extends controller{
 		$response->setView($view);
 		return $response;
 	}
+	public function notfound(){
+		$response = new response();
+		$response->setStatus(false);
+		$response->setHttpCode(404);
+		$response->setView(view::byName(views\notfound::class));
+		return $response;
+	}
 }

@@ -35,6 +35,10 @@
 		{
 			"classes":["views\\remove"],
 			"file":"views/remove.php"
+		},
+		{
+			"classes":["views\\notfound"],
+			"file":"views/notfound.php"
 		}
 	]
 }

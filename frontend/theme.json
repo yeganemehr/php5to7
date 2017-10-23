@@ -58,6 +58,11 @@
 			"name": "\\themes\\php5to7\\views\\remove",
 			"parent": "\\packages\\php5to7\\views\\remove",
 			"file": "html/index.php"
+		},
+		{
+			"name": "\\themes\\php5to7\\views\\notfound",
+			"parent": "\\packages\\php5to7\\views\\notfound",
+			"file": "html/notfound.php"
 		}
 	]
 }
