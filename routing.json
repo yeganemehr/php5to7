@@ -1,0 +1,55 @@
+[
+	{
+		"path": "/",
+		"controller": "controllers\\homepage@index",
+		"method":"get"
+	},
+	{
+		"path": "contributing",
+		"controller": "controllers\\homepage@contributing",
+		"method":"get"
+	},
+	{
+		"path": "donate",
+		"controller": "controllers\\donate@index",
+		"method":"get"
+	},
+	{
+		"path": "donate",
+		"controller": "controllers\\donate@toPayport",
+		"method":"post"
+	},
+	{
+		"path": "donate/callback",
+		"controller": "controllers\\donate@callback"
+	},
+	{
+		"path": "migration",
+		"controller": "controllers\\migration@upload",
+		"@method":"post"
+	},
+	{
+		"path": ["raw", {"type":"dynamic", "name":"md5", "regex":"/^[a-f0-9]{32}$/"}],
+		"controller": "controllers\\migration@raw",
+		"method":"get"
+	},
+	{
+		"path": ["download", {"type":"dynamic", "name":"md5", "regex":"/^[a-f0-9]{32}$/"}],
+		"controller": "controllers\\migration@download",
+		"method":"get"
+	},
+	{
+		"path": ["remove", {"type":"dynamic", "name":"md5", "regex":"/^[a-f0-9]{32}$/"}],
+		"controller": "controllers\\migration@remove",
+		"method":"get"
+	},
+	{
+		"paths": [
+			"/"
+		],
+		"exceptions":[
+			"\\packages\\base\\NotFound"
+		],
+		"handler": "controllers\\homepage@notfound"
+	}
+]

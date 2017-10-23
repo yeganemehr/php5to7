@@ -7,10 +7,61 @@
 		{
 			"file":"library/IncompatibleFixer.php",
 			"classes":["IncompatibleFixer"]
+		},{
+			"file":"library/PrettyPrinter.php",
+			"classes":["PrettyPrinter"]
 		},
 		{
 			"file":"processes/migrate.php",
 			"classes":["processes\\migrate"]
+		},
+		{
+			"file":"library/Zarinpal.php",
+			"classes":["Zarinpal"]
+		},
+		{
+			"file":"library/Exceptions/MerchantException.php",
+			"classes":["MerchantException"]
+		},
+		{
+			"file":"library/Exceptions/MinPayAmountException.php",
+			"classes":["MinPayAmountException"]
+		},
+		{
+			"file":"library/Exceptions/RequestStatusException.php",
+			"classes":["RequestStatusException"]
+		},
+		{
+			"file":"controllers/homepage.php",
+			"classes":["controllers\\homepage"]
+		},
+		{
+			"file":"controllers/donate.php",
+			"classes":["controllers\\donate"]
+		},
+		{
+			"file":"controllers/migration.php",
+			"classes":["controllers\\migration"]
+		},
+		{
+			"file":"views/index.php",
+			"classes":["views\\index"]
+		},
+		{
+			"file":"views/contributing.php",
+			"classes":["views\\contributing"]
+		},
+		{
+			"file":"views/donate/index.php",
+			"classes":["views\\donate\\index"]
+		},
+		{
+			"file":"views/donate/callback.php",
+			"classes":["views\\donate\\callback"]
+		},
+		{
+			"file":"views/remove.php",
+			"classes":["views\\remove"]
 		}
 	]
 }

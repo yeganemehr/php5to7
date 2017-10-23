@@ -1,0 +1,34 @@
+.side-menu {
+	width: 225px;
+	float: left;
+	padding-left: 20px;
+	position: fixed;
+	top: 88px;
+}
+@media all and (max-width: 600px) {
+	.side-menu {
+		float: none;
+		position: static;
+		margin-top: 120px;
+		text-align: center;
+		width: 100%;
+		margin-bottom: -60px;
+		padding-left: 0;
+	}
+}
+.side-menu .title {
+	font-size: 20px;
+	color: rgba(0,0,0,0.63);
+	font-weight: 600;
+	margin-top: 50px;
+	margin-bottom: 36px;
+}
+.side-menu a {
+	font-size: 17px;
+	color: rgba(0,0,0,0.42);
+	display: block;
+	margin: 18px 0;
+}
+.side-menu a:hover {
+	color: rgba(0,0,0,0.6);
+}

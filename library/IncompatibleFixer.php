@@ -30,6 +30,9 @@ class IncompatibleFixer extends NodeVisitorAbstract {
 		if(($result = $this->checkForBreakOrContinue($node)) !== null){
 			return $result;
 		}
+		if(($result = $this->checkForPHP4Cunstructors($node)) !== null){
+			return $result;
+		}
 	}
 	protected function checkForSetExceptionHandler(Node $node){
 		if($node instanceof Node\Expr\FuncCall){
@@ -137,13 +140,24 @@ class IncompatibleFixer extends NodeVisitorAbstract {
 				$newNode = new Node\Expr\ArrayDimFetch($keysVariable, $pointerVariable);
 			}
 			if($newNode){
+				$newNode->setAttribute('php5to7-differ-change', array(
+					'type' => 'change-expr',
+					'from' => $func.'()'
+				));
 				if(!$foreach->hasAttribute('keysVariable')){
+					$keysVariable->setAttribute('php5to7-differ-change', true);
 					$foreach->setAttribute('keysVariable', $keysVariable);
 				}
 				if(!$foreach->hasAttribute('counterVariable')){
+					$counterVariable->setAttribute('php5to7-differ-change', array(
+						'type' => 'new-variable'
+					));
 					$foreach->setAttribute('counterVariable', $counterVariable);
 				}
 				if(!$foreach->hasAttribute('pointerVariable')){
+					$pointerVariable->setAttribute('php5to7-differ-change',array(
+						'type' => 'new-variable'
+					));
 					$foreach->setAttribute('pointerVariable', $pointerVariable);
 				}
 				return $newNode;
@@ -176,9 +190,18 @@ class IncompatibleFixer extends NodeVisitorAbstract {
 	protected function checkForBreakOrContinue(Node $node){
 		if(
 			($node instanceof Node\Stmt\Continue_ or $node instanceof Node\Stmt\Break_) and
-			!$this->findParent($node, Node\Stmt\Foreach_::class)
+			!$this->findParent($node, Node\Stmt\Foreach_::class) and
+			!$this->findParent($node, Node\Stmt\For_::class) and
+			!$this->findParent($node, Node\Stmt\While_::class) and
+			!$this->findParent($node, Node\Stmt\Switch_::class)
 		){
-			return new Node\Stmt\Return_();
+			$newNode = new Node\Stmt\Return_();
+			$newNode->setAttribute('php5to7-differ-change',array(
+				'type' => 'change-keyword',
+				'from' => $node instanceof Node\Stmt\Continue_ ? 'continue' : 'break',
+				'to' => 'return'
+			));
+			return $newNode;
 		}
 	}
 	protected function checkForCallUserMethod(Node $node){
@@ -193,12 +216,37 @@ class IncompatibleFixer extends NodeVisitorAbstract {
 			for($x = 2;$x < $argsCount;$x++){
 				$args[] = $node->args[$x];
 			}
-			return new Node\Expr\FuncCall(new Node\Name('call_user_func'.substr($node->name->toString(), 16)), $args);
+			$newNode = new Node\Expr\FuncCall(new Node\Name('call_user_func'.substr($node->name->toString(), 16)), $args);
+			$newNode->setAttribute('php5to7-differ-change', array(
+				'type' => 'change-function-name',
+				'from' => $node->name->toString(),
+				'to' => 'call_user_func'.substr($node->name->toString(), 16)
+			));
+			return $newNode;
 		}
 	}
 	protected function checkForMcryptFunctions(Node $node){
 		if($node instanceof Node\Expr\FuncCall and $node->name->toString() == "mcrypt_generic_end"){
 			$node->name = new Node\Name('mcrypt_generic_deinit');
+			$node->setAttribute('php5to7-differ-change', array(
+				'type' => 'change-function-name',
+				'from' => 'mcrypt_generic_end',
+				'to' => 'mcrypt_generic_deinit'
+			));
+		}
+	}
+	protected function checkForPHP4Cunstructors(Node $node){
+		if(
+			$node instanceof Node\Stmt\ClassMethod and
+			$class = $this->findParent($node, Node\Stmt\Class_::class) and
+			$node->name == $class->name
+		){
+			$node->name = '__construct';
+			$node->setAttribute('php5to7-differ-change', array(
+				'type' => 'change-method-name',
+				'from' => $class->name,
+				'to' => '__construct'
+			));
 		}
 	}
 }

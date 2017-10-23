@@ -1,0 +1,170 @@
+
+.landing-top {
+	height: 370px;
+	position: relative;
+	padding-top: 80px;
+	margin-bottom: 125px;
+}
+@media all and (max-width: 1000px) {
+	.landing-top {
+	  height: 600px;
+	}
+  }
+.landing-top .bg {
+	background-image: linear-gradient(-132deg, #ffcb64 0%, #fec34d 92%);
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	-webkit-clip-path: url("#top-transition-clip-shape");
+	clip-path: url("#top-transition-clip-shape");
+	will-change: transform; /* For Safari */
+/*
+	* For some reason, clip path makes the whole page
+	* flicker in Mobile Safari. 
+	* So we disable it for mobile.
+	*/
+}
+@media all and (max-width: 600px) {
+	.landing-top .bg {
+		-webkit-clip-path: none;
+		clip-path: none;
+	}
+}
+.landing-top .modal-upload {
+	transform: none;
+	opacity: 1;
+	height: 252px;
+	width: 409px;
+	margin: 20px;
+	background-color: #fff;
+	box-shadow: 0 5px 22px 0 rgba(0,0,0,0.2);
+	border-radius: 8px;
+	margin-top: 59px;
+	text-align: center;
+	display: inline-block;
+	vertical-align: middle;
+	overflow: hidden;
+	transition: height 0.3s;
+	position: absolute;
+	z-index: 10;
+	top: 0;
+	left: 0;
+	@media all and (max-width: 1000px) {
+		position: relative;
+		display: block;
+		margin: 20px auto;
+	}
+	@media all and (max-width: 450px) {
+		width: 100%;
+	}
+	.title {
+		padding-top: 10px;
+		margin-top: 10px;
+		font-family: yekan;
+	}
+	.text {
+		color: rgba(0,0,0,0.48);
+		margin-top: 6px;
+		font-family: Sahel;
+	}
+}
+
+.landing-top .modal-content-overlay {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: #fff;
+	z-index: 2;
+	pointer-events: none;
+	opacity: 0;
+	transition: opacity 0.2s;
+}
+.landing-top .modal-content-overlay.show {
+	opacity: 1;
+}
+.landing-top .example-content {
+	display: none;
+}
+.landing-top .example-content.show {
+	display: block;
+}
+.landing-top .desc {
+	display: inline-block;
+	position: relative;
+	color: #fff;
+	margin-left: 50px;
+	max-width: calc(100% - 409px - 112px);
+	vertical-align: middle;
+	margin-top: 61px;
+	padding-left: 473px;
+	font-family: Sahel;
+}
+@media all and (max-width: 1000px) {
+	.landing-top .desc {
+		display: block;
+		max-width: none;
+		padding-left: 0;
+		margin-left: 0;
+		text-align: center;
+	}
+}
+.landing-top h2 {
+	font-size: 30px;
+	line-height: 51px;
+	font-weight: 300;
+}
+@media all and (max-width: 380px) {
+	.landing-top h2 {
+		font-size: 25px;
+		margin-top: -20px;
+	}
+}
+.landing-top .text-rotater {
+	display: block;
+	height: 57px;
+	overflow: hidden;
+}
+.landing-top .text-rotater span {
+	display: block;
+	transition: transform 0.4s;
+}
+.landing-top .text-rotater.slide-up span {
+	transform: translateY(-51px);
+}
+.landing-top .install {
+	background: rgba(120,40,40,0.32);
+	border-radius: 7px;
+	max-width: 357px;
+	padding: 12px;
+}
+@media all and (max-width: 1000px) {
+	.landing-top .install {
+		margin: 0 auto;
+		text-align: left;
+	}
+}
+.landing-top .install .button {
+	background: rgba(255,255,255,0.39);
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+	display: inline-block;
+}
+.landing-top .install .command {
+	font-family: 'Inconsolata', monospace;
+	padding: 12px;
+	padding-left: 30px;
+}
+.landing-top .install .command::before {
+	content: "$";
+	opacity: 0.5;
+	transform: rotate(8deg);
+	font-size: 20px;
+	position: absolute;
+	margin-left: -27px;
+	margin-top: -2px;
+}

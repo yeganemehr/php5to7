@@ -1,0 +1,63 @@
+{
+	"name": "php5to7",
+	"title": "PHP 5 TO 7",
+	"version": "1.0.0",
+	"author": {
+		"name": "Amir.h Yeganemehr",
+		"website": "http://yeganemehr.ir/"
+	},
+	"homepage": "http://3nacu.com/apital-template/index.html",
+	"assets": [
+		{"type":"package", "name":"bootstrap", "version": "^3.3.7"},
+		{"type":"package", "name":"bootstrap-rtl", "version": "^3.3.4"},
+		{"type":"package", "name":"font-awesome", "version": "^4.7.0"},
+		{"type":"package", "name":"jquery", "version": "^3.2.1"},
+		{"type":"package", "name":"jquery.growl", "version": "^1.3.1"},
+		{"type":"package", "name":"webuilder", "version": "^2.0.1"},
+		{"type":"package", "name":"bootstrap-inputmsg", "version":"^1.0.0"},
+		{"type":"package", "name":"dropzone", "version":"^5.2.0"},
+		{"type":"package", "name":"highlight.js", "version":"^9.12.0"},
+		{"type":"package", "name":"highlightjs-line-numbers.js", "version":"^2.1.0"},
+		{"type":"package", "name":"he", "version":"^1.1.1"},
+		{"type": "less","file": "node_modules/bootstrap/less/bootstrap.less"},
+		{"type": "less","file": "node_modules/bootstrap-rtl/less/bootstrap-rtl.less"},
+		{"type": "less","file": "node_modules/font-awesome/less/font-awesome.less"},
+		{"type": "css","file": "node_modules/jquery.growl/stylesheets/jquery.growl.css"},
+		{"type": "css","file": "node_modules/dropzone/dist/dropzone.css"},
+		{"type": "css","file": "node_modules/highlight.js/styles/default.css"},
+		{"type": "less","file": "assets/less/style.less"},
+		{"type": "ts","file": "assets/ts/Main.ts"}
+
+	],
+	"autoload": "autoloader.json",
+	"languages": {
+		"fa_IR": "langs/fa_IR.json"
+	},
+	"views": [
+		{
+			"name": "\\themes\\php5to7\\views\\index",
+			"parent": "\\packages\\php5to7\\views\\index",
+			"file": "html/index.php"
+		},
+		{
+			"name": "\\themes\\php5to7\\views\\contributing",
+			"parent": "\\packages\\php5to7\\views\\contributing",
+			"file": "html/contributing.php"
+		},
+		{
+			"name": "\\themes\\php5to7\\views\\donate\\index",
+			"parent": "\\packages\\php5to7\\views\\donate\\index",
+			"file": "html/donate/index.php"
+		},
+		{
+			"name": "\\themes\\php5to7\\views\\donate\\callback",
+			"parent": "\\packages\\php5to7\\views\\donate\\callback",
+			"file": "html/donate/callback.php"
+		},
+		{
+			"name": "\\themes\\php5to7\\views\\remove",
+			"parent": "\\packages\\php5to7\\views\\remove",
+			"file": "html/index.php"
+		}
+	]
+}

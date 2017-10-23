@@ -2,5 +2,8 @@
 	"permissions": "*",
 	"autoload": "autoloader.json",
 	"dependencies": ["base", "PhpParser"],
-	"license": "MIT"
+	"license": "MIT",
+	"routing":"routing.json",
+	"frontend":"frontend",
+	"zarinpal.merchantid" : "5f28e144-69c4-11e6-b33d-000c295eb8fc"
 }

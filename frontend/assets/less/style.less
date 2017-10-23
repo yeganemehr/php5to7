@@ -1,0 +1,127 @@
+@import "fonts.less";
+@import "header.less";
+@import "highlight.less";
+@import "landing-top.less";
+@import "page-content.less";
+@import "side-menu.less";
+@import "dropzone.less";
+body, h2, h3, h4, h5, h6{
+	font-family: Sahel;
+}
+pre{
+	text-align: left;
+	direction: ltr;
+}
+.page-container {
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 0 10px;
+	position: relative;
+	overflow: hidden;
+}
+.preview {
+	background-color: #a3dd82;
+	box-shadow: 0 2px 8px 0 rgba(0,0,0,0.07);
+	border-radius: 4px;
+	border: none;
+	color: #fff; 
+	font-size: 15px;
+	color: #fff;
+	padding: 9px 18px;
+	margin-top: 20px;
+}
+.preview::before {
+	content: "";
+	width: 0;
+	height: 0;
+	border-top: 6px solid transparent;
+	border-bottom: 6px solid transparent;
+	border-left: 10px solid #fff;
+	display: inline-block;
+	margin-right: 5px;
+}
+.preview:hover {
+	background-color: #98d973;
+}
+footer {
+	padding: 40px 20px 20px;
+	text-align: left;
+	color: #728194;
+}
+/* for block of numbers */
+.hljs-ln td.hljs-ln-numbers {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+	text-align: center;
+	color: #ccc;
+	border-right: 1px solid #CCC;
+	vertical-align: top;
+	padding-right: 5px;
+	word-break: initial;
+	white-space: initial;
+	/* your custom style here */
+}
+
+/* for block of code */
+.hljs-ln td.hljs-ln-code {
+	padding-left: 10px;
+	word-break: initial;
+}
+.ltr{
+	direction: ltr;
+}
+.file-preview{
+	margin-top: 25px;
+	overflow: hidden;
+	.preview-code{
+		pre{
+			background: transparent;
+			border: none;
+			border-radius: 0;
+			padding: 0;
+			margin: 0;
+			code{
+				background: transparent;
+				white-space: pre;
+				.table-responsive{
+					border-right:1px solid #ccc;
+				}
+			}
+		}
+	}
+	.col-lg-12{
+		.preview-code{
+			pre{
+				code{
+					.table-responsive{
+						border-right: 0 none;
+					}
+				}
+			}
+		}
+	}
+	.notice{
+		code{
+			display: inline-block;
+			direction: ltr;
+		}
+	}
+}
+.box-remove{
+	text-align: center;
+	margin-top: -85px;
+	> p{
+		font-size: 22px;
+		font-family: yekan;
+		color: #3c763d;
+		&:first-child{
+			font-size: 102px
+		}
+	}
+}
+@import "donate.less";
