@@ -145,7 +145,6 @@ class IncompatibleFixer extends NodeVisitorAbstract {
 					'from' => $func.'()'
 				));
 				if(!$foreach->hasAttribute('keysVariable')){
-					$keysVariable->setAttribute('php5to7-differ-change', true);
 					$foreach->setAttribute('keysVariable', $keysVariable);
 				}
 				if(!$foreach->hasAttribute('counterVariable')){
@@ -176,13 +175,25 @@ class IncompatibleFixer extends NodeVisitorAbstract {
 		if($node instanceof Node\Stmt\Foreach_){
 			$newNode = [$node];
 			if($node->hasAttribute('keysVariable')){
-				array_unshift($newNode, new Node\Expr\Assign($node->getAttribute('keysVariable'), new Node\Expr\FuncCall(new Node\Name('array_keys'),  [new Node\Arg($node->expr)])));
+				$assign = new Node\Expr\Assign($node->getAttribute('keysVariable'), new Node\Expr\FuncCall(new Node\Name('array_keys'),  [new Node\Arg($node->expr)]));
+				$assign->setAttribute('php5to7-differ-change', array(
+					'type' => 'new-variable'
+				));
+				array_unshift($newNode, $assign);
 			}
 			if($node->hasAttribute('counterVariable')){
-				array_unshift($newNode, new Node\Expr\Assign($node->getAttribute('counterVariable'),new Node\Scalar\LNumber(0)));
+				$assign = new Node\Expr\Assign($node->getAttribute('counterVariable'),new Node\Scalar\LNumber(0));
+				$assign->setAttribute('php5to7-differ-change', array(
+					'type' => 'new-variable'
+				));
+				array_unshift($newNode, $assign);
 			}
 			if($node->hasAttribute('pointerVariable')){
-				array_unshift($node->stmts, new Node\Expr\Assign($node->getAttribute('pointerVariable'), new Node\Expr\PreInc($node->getAttribute('counterVariable'))));
+				$assign = new Node\Expr\Assign($node->getAttribute('pointerVariable'), new Node\Expr\PreInc($node->getAttribute('counterVariable')));
+				$assign->setAttribute('php5to7-differ-change', array(
+					'type' => 'new-variable'
+				));
+				array_unshift($node->stmts, $assign);
 			}
 			return $newNode;
 		}
